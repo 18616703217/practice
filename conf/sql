@@ -1,0 +1,101 @@
+CREATE TABLE `system_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(50) NOT NULL DEFAULT '1',
+  `password` varchar(12) NOT NULL,
+  `group_id` int DEFAULT '0',
+  `email` varchar(100)  DEFAULT '1',
+  `delete_status`  tinyint  DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `system_group` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(50) NOT NULL DEFAULT '1',
+  `remark` varchar(200) ,
+  `delete`  tinyint  DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `system_operation` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `operation_name` varchar(50) NOT NULL DEFAULT '1',
+  `group_id` varchar(12) NOT NULL,
+  `operation_type` int(11) DEFAULT '0',
+  `jar_name` varchar(100)  DEFAULT '1',
+  `class_name`  tinyint  DEFAULT 0,
+  `update_time`  DATE ,
+  `user_id`  int,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `basic_interfac` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `interfac_name` varchar(200) NOT NULL DEFAULT '1',
+  `url` varchar(150) NOT NULL,
+  `method` varchar(10) DEFAULT '0',
+  `group_id`int  NOT NULL,
+  `query_data`  TEXT,
+  `header_data`  TEXT,
+  `body_data`  TEXT,
+  `body_type`  varchar(10),
+  `user_id`  int  DEFAULT 0,
+  `update_time`  DATE  ,
+  `version`  varchar(50),
+  `delete`  tinyint  DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `basic_case_info` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id`  int,
+  `case_name` varchar(50) NOT NULL DEFAULT '1',
+  `group_id` varchar(12) NOT NULL,
+  `remark` varchar(200) ,
+  `delete`  tinyint  DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `basic_case_data` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `case_id` int NOT NULL,
+  `query_data`  TEXT,
+  `header_data`  TEXT,
+  `body_data`  TEXT,
+  `body_type`  varchar(10),
+  `update_time`  DATE ,
+  `version`  varchar(50),
+  `assert`  varchar(150),
+  `operation_start`  varchar(150),
+  `operation_end`  varchar(150),
+  `delete`  tinyint  DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `basic_task_info` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `task_name` varchar(50) NOT NULL DEFAULT '1',
+  `update_time`  tinyint  DEFAULT 0,
+  `user_id`  int ,
+  `remark` varchar(200) ,
+  `delete`  tinyint  DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `basic_task_data` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `task_id` int ,
+  `case_id` int ,
+  `delete`  tinyint  DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `result_report` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `report_name` varchar(50) NOT NULL DEFAULT '1',
+  `group_id` varchar(12) NOT NULL,
+  `task_id` int ,
+  `task_result` tinyint,
+  `task_message` varchar(255),
+  `delete`  tinyint  DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
