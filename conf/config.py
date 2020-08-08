@@ -20,7 +20,7 @@ class ProductionConfig(Config):
     DIALCT = 'mysql'
     DRIVER = "pymysql"
     USERNAME = 'root'
-    PASSWORD = '111111'
+    PASSWORD = 'Zwq123!@#'
     HOST = 'localhost'
     PORT = '3306'
     DBNAME = 'practice'
@@ -30,7 +30,18 @@ class ProductionConfig(Config):
 
 
 class DevelopmentConfig(Config):
-    pass
+    """运行环境配置"""
+    DEBUG = True
+    DIALCT = 'mysql'
+    DRIVER = "pymysql"
+    USERNAME = 'root'
+    PASSWORD = '111111'
+    HOST = 'localhost'
+    PORT = '3306'
+    DBNAME = 'practice'
+    SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?charset=utf8mb4'.format(DIALCT, USERNAME, PASSWORD, HOST, PORT,
+                                                                           DBNAME)
+    SQLALCHEMY_TRACK_MODIFICATIONS = True  # 没有此配置会导致警告
 
 
 config = {

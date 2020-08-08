@@ -7,7 +7,7 @@ from controller.obtain_target_summary import obtain_target_summary
 
 app = Flask(__name__)
 # 引入配置文件中的相关配置
-app.config.from_object(config.config["testing"])
+app.config.from_object(config.config["development"])
 # 配置db
 BaseDao.init(app)
 # 注册蓝图，并指定其对应的前缀（url_prefix）

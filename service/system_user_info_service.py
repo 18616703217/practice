@@ -23,10 +23,10 @@ class SystemUserInfoService:
         result = None
         if not user_info.get("id"):
             result = self.user_info.insert_user(user_info)
-
-        update_user_info = self.user_info.find_by_id(user_info["id"])
-        if update_user_info:
-            result = self.user_info.update_user_by_id(update_user_info)
+        else:
+            update_user_info = self.user_info.find_by_id(user_info["id"])
+            if update_user_info:
+                result = self.user_info.update_user_by_id(user_info)
 
         self.result_message.data = result
         self.result_message.errcode = test_jar_conf.SUCCESS_CODE
